@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="static/style.css?after">
+    <link rel="stylesheet" type="text/css" href="static/bootstrap.min.css?after">
+    <title>단국대 맛집추천 단슐랭</title>
+</head>
+<body>
+    <!-- 공통으로 출력할 네비게이션 바를 구현 -->
+    <div class="container">
+        <header class="blog-header lh-1 py-3">
+            <div class="row flex-nowrap justify-content-between align-items-center">
+                <div class="col-4 pt-1">   
+                </div>
+                <div class="col-4 text-center">
+                    <a class="fs-1 fw-bold text-dark navbar-brand" href={% url 'main:index' %}>단슐랭</a>
+                </div>
+                <div class="col-4 d-flex justify-content-end align-items-center">
+                    {% if not user.is_authenticated %}
+                    <a class="fs-5 btn btn-basic" href="#signup">회원가입</a>
+                    {% endif %}
+                    {% if user.is_authenticated %}
+                    <a class="link-secondary navbar-text" href="#logout">{{ user.username }} (로그아웃)</a>
+                    {% else %}
+                    <a class="fs-5 btn btn-basic" href="#login">로그인</a>
+                    {% endif %}
+                </div>
+            </div>
+        </header>
+        <hr>
+        <navbar class="navbar border border-2 border-secondary navbar-dark d-flex justify-content-between">
+            <div class="container-fluid">
+                <a class="fs-5 nav-link text-dark" href="#">한식</a>
+                <a class="fs-5 nav-link text-dark" href="#">일식</a>
+                <a class="fs-5 nav-link text-dark" href="#">중식</a>
+                <a class="fs-5 nav-link text-dark" href="#">양식</a>
+                <a class="fs-5 nav-link text-dark" href="#">술집</a>
+                <a class="fs-5 nav-link text-dark" href="#">고깃집</a>
+                <a class="fs-5 nav-link text-dark" href="#">아시안</a>
+                <a class="fs-5 nav-link text-dark" href="#">치킨/피자</a>
+                <a class="fs-5 nav-link text-dark" href="#">패스트푸드</a>
+                <a class="fs-5 nav-link text-dark" href="#">분식/간편식</a>
+                <a class="fs-5 nav-link text-dark" href="#">카페/음료/디저트</a>   
+            </div>
+        </nav>
+    </div>
+    <main class="container">
+    <!-- 상속받는 HTML파일의 Body가 들어가는 부분 -->
+    {% block content %}
+    {% endblock %}
+    <!-- 상속받는 HTML파일의 Script가 들어가는 부분 -->
+    </main>
+    <script src="static/bootstrap.min.js">
+    {% block script %}
+    {% endblock %}
+    </script>
+<!-- End -->
+</body>
+</html>
