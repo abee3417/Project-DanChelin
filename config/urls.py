@@ -15,8 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from mainapp import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    #path('', views.index, name='index'), # 로그인 후, 로그아웃 후 url을 위해 매핑규칙을 같은걸 하나 더 추가
     path('', include('mainapp.urls')),
+    path('user/', include('useradmin.urls')),
+    path('admin/', admin.site.urls),
 ]
