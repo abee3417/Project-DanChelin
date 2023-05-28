@@ -1,24 +1,31 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+{% if post_list %}
 <div class="album py-5 bg-light">
     <div class="container">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
             <!-- 게시글 시작 -->
+            {% for post in post_list %}
             <div class="col">
-                <a href='#' class="card shadow-sm fs-5 nav-link text-dark border border-3 border-drak">
-                    <img class="rounded" width="100%" height="225" src="{% static 'images/cuteruti.jpg' %}" alt="ruti">
+                <a href="{% url 'main:detail' post.id %}" class="card shadow-sm fs-5 nav-link text-dark border border-3 border-drak">
+                    <img class="rounded" width="100%" height="225" src="/media/{{post.image}}" alt="korean_post">
                     <div class="card-body">
-                        <p class="card-text">우리집 고양이 귀여운 루티</p>
+                        <p class="card-text fs-4">{{ post.subject }}</p>
                         <div class="d-flex justify-content-between align-items-center">
-                            <small class="text-muted fs-6">평점 10.0</small>
+                            <small class="text-muted fs-6">{{ post.location }}</small>
                         </div>
                     </div>
                 </a>
             </div>
+            {% endfor %}
         </div>
     </div>
 </div>
+{% else %}
+<br><br><br><br><br>
+<p class="fs-2 text-secondary text-center">준비중입니다.</p>
+{% endif %}
 {% endblock %}
 {% block script %}
 <script type='text/javascript'>
