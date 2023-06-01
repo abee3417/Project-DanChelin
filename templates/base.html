@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
     <title>단국대 맛집추천 단슐랭</title>
 </head>
 <body>
@@ -36,8 +37,8 @@
             <div class="container-fluid">
                 <a class="fs-5 nav-link text-dark" href={% url 'main:list1' %}>한식</a>
                 <a class="fs-5 nav-link text-dark" href={% url 'main:list2' %}>일식</a>
-                <a class="fs-5 nav-link text-dark" href="#">중식</a>
-                <a class="fs-5 nav-link text-dark" href="#">양식</a>
+                <a class="fs-5 nav-link text-dark" href={% url 'main:list3' %}>중식</a>
+                <a class="fs-5 nav-link text-dark" href={% url 'main:list4' %}>양식</a>
                 <a class="fs-5 nav-link text-dark" href="#">술집</a>
                 <a class="fs-5 nav-link text-dark" href="#">고깃집</a>
                 <a class="fs-5 nav-link text-dark" href="#">아시안</a>

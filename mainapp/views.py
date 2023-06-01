@@ -15,6 +15,12 @@ def detail(request, post_id):
     return render(request, 'mainapp/detail.html', context) # question_detail.html에 있는 question에 context를 전달
 
 @login_required(login_url='user:login')
+def vote(request, post_id):
+    post = get_object_or_404(Post, pk=post_id)
+    post.voter.add(request.user) # 추천인 속성에 유저를 추가
+    return redirect('main:detail', post_id=post.id)
+
+@login_required(login_url='user:login')
 def comment_create(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
     if request.method == "POST":
@@ -67,3 +73,11 @@ def list2(request):
     post_list = Post.objects.filter(category=2) # Post 중 카테고리 2 (일식)만 반환
     context = {'post_list': post_list}
     return render(request, 'mainapp/list2.html', context)
+
+def list3(request):
+    post_list = Post.objects.filter(category=3) # Post 중 카테고리 3 (중식)만 반환
+    context = {'post_list': post_list}
+    return render(request, 'mainapp/list3.html', context)
+
+def list4(request):
+    return render(request, 'mainapp/list4.html')

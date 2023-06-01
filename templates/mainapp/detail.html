@@ -3,7 +3,12 @@
 <!-- 본문 시작 -->
 <div class="container my-3 row row-cols-2">
     <div class="col-12">
-        <h1 class="border-bottom py-2">{{ post.subject }}</h1>
+        <h1 class="border-bottom py-2">{{ post.subject }}
+            <a href="javascript:void(0)" data-uri="{% url 'main:vote' post.id  %}"
+                class="recommend btn btn-outline-white"> <i class="text-success bi bi-hand-thumbs-up-fill"></i>
+                <span class="">{{post.voter.count}}</span>
+            </a>
+        </h1>
     </div>
     <div class="col-12">
         <img class="rounded" width="50%" height="225" src="/media/{{post.image}}" alt="korean_post">
@@ -13,28 +18,28 @@
     <!-- 질문 -->
     <div class="col">
         <div class="mb-3">
-            <h3 class="border-bottom py-2">주소</h3>
+            <h3 class="border-bottom py-2"><i class="align-bottom bi bi-house-door"></i> 주소</h3>
             <div class="card-text fs-5" style="white-space: pre-line;">{{ post.location }}</div>
         </div>
         <div class="mb-3">
-            <h3 class="border-bottom py-2">전화번호</h3>
+            <h3 class="border-bottom py-2"><i class="align-bottom bi bi-telephone"></i> 전화번호</h3>
             <div class="card-text fs-5" style="white-space: pre-line;">{{ post.callnum }}</div>
         </div>
     </div>
     <div class="col">
         <div class="mb-3">
-            <h3 class="border-bottom py-2">영업시간</h3>
+            <h3 class="border-bottom py-2"><i class="align-bottom bi bi-clock"></i> 영업시간</h3>
             <div class="card-text fs-5" style="white-space: pre-line;">{{ post.timeinfo }}</div>
         </div>
         <div class="mb-3">
-            <h3 class="border-bottom py-2">URL링크</h3>
+            <h3 class="border-bottom py-2"><i class="align-bottom bi bi-link-45deg"></i> URL링크</h3>
             <div class="card-text fs-5" style="white-space: pre-line;">{{ post.urlinfo }}</div>
         </div>
     </div>
 </div>
 <div class="container my-3 row">
     <div class="col-12">
-        <h3 class="border-bottom py-2">메뉴</h3>
+        <h3 class="border-bottom py-2"><i class="align-bottom bi bi-journal-text"></i> 메뉴</h3>
         <div class="card my-3">
             <div class="card-body">    
                 <div class="card-text fs-5" style="white-space: pre-line;">{{ post.menu }}</div>
@@ -42,7 +47,7 @@
         </div>
     </div>  
     <div class="col-12">
-        <h3 class="border-bottom py-2">총평</h3>
+        <h3 class="border-bottom py-2"><i class="align-bottom bi bi-info-circle"></i></i> 총평</h3>
         <div class="card my-3">
             <div class="card-body">    
                 <div class="card-text fs-5" style="white-space: pre-line;">{{ post.review }}</div>
@@ -54,7 +59,7 @@
 <!-- 의견 시작 -->
 <div class="container my-3">
     <!-- 각 post 객체마다 있는 comment들을 출력해준다. -->
-    <h4 class="border-bottom my-3 py-2">{{post.comment_set.count}}개의 의견이 있습니다.</h4>
+    <h4 class="border-bottom my-3 py-2"><i class="align-bottom bi bi-chat-dots"></i> {{post.comment_set.count}}개의 의견이 있습니다.</h4>
     {% for comment in post.comment_set.all %}
     <div class="card my-3">
         <div class="card-body">
@@ -114,13 +119,24 @@
 {% endblock %}
 {% block script %}
 <script type='text/javascript'>
-const delete_elements = document.getElementsByClassName("delete");
-Array.from(delete_elements).forEach(function(element) {
-    element.addEventListener('click', function() {
-        if(confirm("정말로 삭제하시겠습니까?")) {
-            location.href = this.dataset.uri;
-        };
+    // 의견 삭제 시의 사용할 자바스크립트, 즉 class="delete"일때 사용
+    const delete_elements = document.getElementsByClassName("delete");
+    Array.from(delete_elements).forEach(function(element) {
+        element.addEventListener('click', function() {
+            if(confirm("삭제하시겠습니까?")) {
+                location.href = this.dataset.uri;
+                // 확인 누르면 data-uri에 적용된 링크가 실행
+            };
+        });
     });
-});
+    // 추천 시의 사용할 자바스크립트, 즉 class="recommend"일때 사용
+    const recommend_elements = document.getElementsByClassName("recommend");
+    Array.from(recommend_elements).forEach(function(element) {
+        element.addEventListener('click', function() {
+            if(confirm("추천하시겠습니까?")) {
+                location.href = this.dataset.uri; 
+            };
+        });
+    });
 </script>
 {% endblock %}
