@@ -11,10 +11,9 @@
         </h1>
     </div>
     <div class="col-12">
-        <img class="rounded" width="50%" height="225" src="/media/{{post.image}}" alt="korean_post">
+        <img class="rounded" width="50%" height="300" src="/media/{{post.image}}" alt="korean_post">
         <br><br>
     </div>
-    <!-- 질문 -->
     <div class="col">
         <div class="mb-3">
             <h3 class="border-bottom py-2"><i class="align-bottom bi bi-house-door"></i> 주소</h3>
@@ -32,7 +31,7 @@
         </div>
         <div class="mb-3">
             <h3 class="border-bottom py-2"><i class="align-bottom bi bi-link-45deg"></i> URL링크</h3>
-            <div class="card-text fs-5" style="white-space: pre-line;">{{ post.urlinfo }}</div>
+            <div class="card-text fs-5" style="white-space: pre-line;"><a href="{{ post.urlinfo }}">{{ post.urlinfo }}</a></div>
         </div>
     </div>
 </div>
@@ -87,23 +86,9 @@
     </div>
     {% endfor %}
     <!-- 의견 작성 -->
-    <!-- 값을 넘겨줄 일이 있을 시 form action을 사용. 작성한 내용이 method 방식으로 url로 전송 -->
     <form action="{% url 'main:comment_create' post.id %}" method="post" class="my-3">
         {% csrf_token %}
-        <!-- 오류표시 Start -->
-        {% if form.errors %}
-        <div class="alert alert-danger" role="alert">
-            {% for field in form %}
-            {% if field.errors %}
-            <div>
-                <strong>{{ field.label }}</strong>
-                {{ field.errors }}
-            </div>
-            {% endif %}
-            {% endfor %}
-        </div>
-        {% endif %}
-        <!-- 오류표시 End -->
+        {% include "form_errors.html" %}
         <div class="mb-3">
             <label for="content" class="form-label">의견작성</label>
             <!-- 로그인 안했으면 의견작성을 불가능하게 막는다. -->

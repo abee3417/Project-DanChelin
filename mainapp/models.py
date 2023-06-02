@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class Post(models.Model):
-    category = models.IntegerField() # 1~11까지로 한식부터 카페까지 구분하기 위한 필드
+    category = models.IntegerField() # 1~12까지로 한식부터 카페까지 구분하기 위한 필드
     subject = models.CharField(max_length=200) # 가게이름
     location = models.CharField(max_length=200) # 주소
     callnum = models.CharField(max_length=200) # 전화번호
