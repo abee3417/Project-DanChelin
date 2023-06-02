@@ -9,6 +9,13 @@ from django.contrib import messages # 오류발생 창을 위한 messages
 def index(request):
     return render(request, 'mainapp/lobby.html')
 
+def list(request, post_category):
+    # Post 중 해당하는 카테고리만 분류하여 반환
+    # 1~11까지 한식~디저트
+    post_list = Post.objects.filter(category=post_category) 
+    context = {'post_list': post_list}
+    return render(request, 'mainapp/list.html', context)
+
 def detail(request, post_id):
     post = get_object_or_404(Post, pk=post_id) # Question.objects.get의 상위호환이다. 실패하면 404오류를 전달
     context = {'post': post}
@@ -63,21 +70,3 @@ def comment_delete(request, comment_id):
     else:
         comment.delete()
     return redirect('main:detail', post_id=comment.post.id)
-
-def list1(request):
-    post_list = Post.objects.filter(category=1) # Post 중 카테고리 1 (한식)만 반환
-    context = {'post_list': post_list}
-    return render(request, 'mainapp/list1.html', context)
-
-def list2(request):
-    post_list = Post.objects.filter(category=2) # Post 중 카테고리 2 (일식)만 반환
-    context = {'post_list': post_list}
-    return render(request, 'mainapp/list2.html', context)
-
-def list3(request):
-    post_list = Post.objects.filter(category=3) # Post 중 카테고리 3 (중식)만 반환
-    context = {'post_list': post_list}
-    return render(request, 'mainapp/list3.html', context)
-
-def list4(request):
-    return render(request, 'mainapp/list4.html')

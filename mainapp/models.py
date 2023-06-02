@@ -13,7 +13,7 @@ class Post(models.Model):
     review = models.TextField() # 총평
     image = models.ImageField(blank=True, upload_to='media/') # 썸네일사진
     summary = models.CharField(max_length=200) # 썸네일텍스트
-    voter = models.ManyToManyField(User)  # 추천인
+    voter = models.ManyToManyField(User, blank=True)  # 추천인
 
     def __str__(self):
         return self.subject
