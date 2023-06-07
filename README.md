@@ -14,14 +14,13 @@
 <br><br>
 
 ## 2. 개발 환경 및 개발 언어
-
+<br>
 > <b>Android App 개발 환경 </b>  <br>
 <br>Development Tool: Microsoft Visual Studio Code 1.76.2 <br>
 Web Framework : Django 4.1.4<br>
 Programming Language : Python 3.10.5, HTML5, CSS3<br>
 Front-End Framework : Bootstrap 5.1.3<br>
 <br>
-
 
 > <b>Server 개발 환경</b> <br>
 <br>Terminal : MobaXterm 23.1<br>
@@ -30,11 +29,9 @@ Ubuntu 20.04 LTS<br>
 <br><br>
 
 ## 3. 웹 접속 & 활용 가이드
-<br>
 ### 접속 링크
 http://3.39.89.130:8000/<br>
-서버가 열려있을 시에만 접속이 가능합니다.<br>
-<br>
+서버가 열려있을 시에만 접속이 가능합니다.<br><br>
 ### 활용 가이드 영상
 https://youtu.be/bx-evkVm_fY<br>
 단슐랭 사용 방법을 영상으로 소개합니다.<br>
@@ -42,7 +39,7 @@ https://youtu.be/bx-evkVm_fY<br>
 
 
 ## 4. 버전 관리
-<br>ver 1 : 단슐랭 메인 페이지 HTML 구현 <br>
+ver 1 : 단슐랭 메인 페이지 HTML 구현 <br>
 ver 2 : 로그인 및 회원가입 구현 <br>
 ver 3 : 카테고리 게시판, 매장 상세 페이지, 댓글 기능 추가 (한 매장만 임시로 구현) <br>
 ver 4 : 매장 추천도 기능 추가, 페이지 디자인에 이모티콘 추가 <br>
