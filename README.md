@@ -1,7 +1,3 @@
-# 커뮤니티형 단국대 맛집 안내 플랫폼 "단슐랭"
-
-<br>
-
 ## 1. 프로젝트 소개
 [![danchelin-main.png](https://i.postimg.cc/TYbNgZq5/danchelin-main.png)](https://postimg.cc/zVJk12Qq)<br>
 세계에서 유명한 레스토랑들을 소개하고 평가하는 가장 대표적인 잡지인 "미슐랭 가이드". <br>
