@@ -14,7 +14,7 @@
 <br><br>
 
 ## 2. 개발 환경 및 개발 언어
-<br>
+
 > <b>Android App 개발 환경 </b>  <br>
 <br>Development Tool: Microsoft Visual Studio Code 1.76.2 <br>
 Web Framework : Django 4.1.4<br>
